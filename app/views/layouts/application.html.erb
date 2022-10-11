@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <%= notice if notice %>
+    <% if session %>
+      <%= session[:data]["email"] %>
+      <%= button_to "Log Out", logout_path, to: "pages#logout", method: :post %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

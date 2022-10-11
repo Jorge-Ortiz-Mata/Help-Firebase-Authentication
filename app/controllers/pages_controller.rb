@@ -24,11 +24,14 @@ class PagesController < ApplicationController
   def login
   end
 
+  def logout
+    session.clear
+    redirect_to root_path, notice: "Log Out"
+  end
+
   private
     def user_email
       @email = params[:email]
       @password = params[:password]
-      puts @email
-      puts @password
     end
 end
