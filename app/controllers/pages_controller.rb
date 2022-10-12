@@ -22,6 +22,18 @@ class PagesController < ApplicationController
   end
 
   def login
+    user_email
+    uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCZ-rftIN5eO4SKP41ahr5SCOHetWzjOYA")
+
+    response = Net::HTTP.post_form(uri, "email": @email, "password": @password)
+    data = JSON.parse(response.body)
+
+
+    if response.is_a?(Net::HTTPSuccess)
+      session[:user_id] = data["localId"]
+      session[:data] = data
+      redirect_to root_path, notice: "Log in successfully."
+    end
   end
 
   def logout

@@ -12,8 +12,7 @@
 
   <body>
     <%= notice if notice %>
-    <% if session %>
-      <%= session[:data]["email"] %>
+    <% if current_user.present? %>
       <%= button_to "Log Out", logout_path, to: "pages#logout", method: :post %>
     <% end %>
     <%= yield %>
