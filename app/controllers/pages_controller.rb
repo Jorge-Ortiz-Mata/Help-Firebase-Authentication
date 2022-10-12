@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
   def signup
     user_email
-    uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCZ-rftIN5eO4SKP41ahr5SCOHetWzjOYA")
+    uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=HERE_GOES_MY_API_KEY")
 
     response = Net::HTTP.post_form(uri, "email": @email, "password": @password)
     data = JSON.parse(response.body)
@@ -23,7 +23,7 @@ class PagesController < ApplicationController
 
   def login
     user_email
-    uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCZ-rftIN5eO4SKP41ahr5SCOHetWzjOYA")
+    uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=HERE_GOES_MY_API_KEY")
 
     response = Net::HTTP.post_form(uri, "email": @email, "password": @password)
     data = JSON.parse(response.body)
